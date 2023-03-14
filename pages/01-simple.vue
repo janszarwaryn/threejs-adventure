@@ -1,7 +1,7 @@
 <script setup>
 import * as THREE from 'three';
 
-definePageMeta({title: `01 simple 3d object`});
+definePageMeta({title: `01 simple object`});
 
 const route = useRoute();
 useHead({
