@@ -34,7 +34,7 @@ const fn = () => {
       const positionsArray = new Float32Array(count * 3 * 3);
 
       // use loop to add vertices value
-      for(let i = 0; i < count * 3 * 3; i++){
+      for (let i = 0; i < count * 3 * 3; i++) {
         positionsArray[i] = (Math.random() - .5) * parameters.size;
       }
 

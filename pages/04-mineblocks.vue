@@ -26,13 +26,13 @@ const fn = () => {
   /**
    * Helpers
    */
-  function getCirclePosition(numberOfPoints, radius = 10){
+  function getCirclePosition(numberOfPoints, radius = 10) {
     let radStep = 2 * Math.PI / numberOfPoints,
         radBegin = Math.PI,
         center = {x: 0, y: 0},
         coordinates = [];
 
-    for(let i = 0; i < numberOfPoints; i++){
+    for (let i = 0; i < numberOfPoints; i++) {
       const rad = radBegin + radStep * i;
       coordinates.push({x: center.x + radius * Math.cos(rad), y: center.y + radius * Math.sin(rad)});
     }
@@ -289,7 +289,7 @@ Drops: Ender gem and Experience
   const descriptionPositions = getCirclePosition(blockTextures.length, 10.15);
 
 // generate textures
-  for(let i = 0; i < blockTextures.length; i++){
+  for (let i = 0; i < blockTextures.length; i++) {
     const blockName = blockTextures[i].name;
     const blockMaterialPath = getBlockTexturePath(blockName);
 
@@ -324,7 +324,7 @@ Drops: Ender gem and Experience
     const textMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture});
     const descriptionMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture});
 
-    for(let i = 0; i < blockTextures.length; i++){
+    for (let i = 0; i < blockTextures.length; i++) {
       const blockName = typeof blockTextures[i].pretty !== "undefined" ? blockTextures[i].pretty : blockTextures[i].name;
 
       // Create text "めっちゃ凄い"
@@ -349,7 +349,7 @@ Drops: Ender gem and Experience
       // description
       const blockDescription = blockTextures[i].description;
 
-      if(typeof blockDescription !== "undefined"){
+      if (typeof blockDescription !== "undefined") {
         const descriptionGeometry = new THREE.TextGeometry(blockDescription, {
           font: font,
           size: window.innerWidth > 768 ? .02 : .014,
@@ -375,7 +375,7 @@ Drops: Ender gem and Experience
    */
   const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 
-  for(let i = 0; i < blockTextures.length; i++){
+  for (let i = 0; i < blockTextures.length; i++) {
     const blockTexture = blockTextures[i].textures;
 
     // material
@@ -412,17 +412,17 @@ Drops: Ender gem and Experience
           }
         },
         onUpdate: () => {
-          if(timeline.progress() === 1 && direction === 1){
+          if (timeline.progress() === 1 && direction === 1) {
             window.scrollTo(0, 0);
           }
-          if(timeline.progress() === 0 && direction === -1){
+          if (timeline.progress() === 0 && direction === -1) {
             window.scrollTo(0, document.body.scrollHeight);
           }
         }
       }),
       step = Math.PI * 2 / blockTextures.length;
 
-  for(let i = 0; i < blockTextures.length; i++){
+  for (let i = 0; i < blockTextures.length; i++) {
     timeline.to([group.rotation, groupText.rotation, groupDescription.rotation], {x: (i + 1) * step}/*, ">+=2"*/);
   }
 
@@ -430,11 +430,11 @@ Drops: Ender gem and Experience
 
 // Render using GSAP ticker
   const render = () => {
-    for(let i = 0; i < groupText.children.length; i++){
+    for (let i = 0; i < groupText.children.length; i++) {
       groupText.children[i].lookAt(camera.position);
     }
 
-    for(let i = 0; i < groupDescription.children.length; i++){
+    for (let i = 0; i < groupDescription.children.length; i++) {
       groupDescription.children[i].lookAt(camera.position);
       groupDescription.children[i].rotation.z = 0;
     }
@@ -465,7 +465,18 @@ useHead({
 </template>
 
 <style>
-html {overflow:auto;}
-body.mineblocks {height:1500vh; overflow:auto;}
-body.mineblocks #__nuxt {position:fixed; top:0; left:0;}
+html {
+  overflow: auto;
+}
+
+body.mineblocks {
+  height: 1500vh;
+  overflow: auto;
+}
+
+body.mineblocks #__nuxt {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 </style>
