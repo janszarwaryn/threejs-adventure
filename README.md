@@ -1,6 +1,5 @@
 # Three.js adventure
 
-
 ---
 
 Lesson recap and exercises.
